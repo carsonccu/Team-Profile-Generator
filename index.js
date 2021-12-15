@@ -62,4 +62,66 @@ function promptManager(){
     })
 };
 
+function promptEngineer(){
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "What is your engineer's name?"
+        },
+        {
+            type: "input",
+            name: "engineerid",
+            message: "What is your engineer's id?"
+        },
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "What is your engineer's email?"
+        },
+        {
+            type: "input",
+            name: "engineerGithub",
+            message: "What is your engineer's Github?"
+        },
 
+    ])
+    .then((answers)=>{
+        const engineer = new Engineer(answers.engineerName, answers.engineerid, answers.engineerEmail, answers.engineerGithub);
+        employeearray.push(engineer)
+        console.log("engineer updated")
+        promptContinue();
+    })
+};
+
+function promptIntern(){
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "InternName",
+            message: "What is your Intern's name?"
+        },
+        {
+            type: "input",
+            name: "internid",
+            message: "What is your intern's id?"
+        },
+        {
+            type: "input",
+            name: "internEmail",
+            message: "What is your intern's email?"
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is your intern's school?"
+        },
+
+    ])
+    .then((answers)=>{
+        const intern = new Intern(answers.internName, answers.internid, answers.internEmail, answers.school);
+        employeearray.push(intern)
+        console.log("intern updated")
+        promptContinue();
+    })
+};
