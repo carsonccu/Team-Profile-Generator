@@ -1,12 +1,9 @@
 
 const inqurier = require("inquirer")
-const fs = require("fs")
 const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager")
-const { generateKey } = require("crypto")
-const inquirer = require("inquirer")
 const employeearray =[];
 promptManager()
 
@@ -58,7 +55,7 @@ function promptManager(){
         const manager = new Manager(answers.managerName, answers.managerid, answers.managerEmail, answers.mangerOffice);
         employeearray.push(manager)
         console.log("manager updated")
-        promptContinue();
+        promptStart();
     })
 };
 
@@ -90,7 +87,7 @@ function promptEngineer(){
         const engineer = new Engineer(answers.engineerName, answers.engineerid, answers.engineerEmail, answers.engineerGithub);
         employeearray.push(engineer)
         console.log("engineer updated")
-        promptContinue();
+        promptStart();
     })
 };
 
@@ -122,6 +119,6 @@ function promptIntern(){
         const intern = new Intern(answers.internName, answers.internid, answers.internEmail, answers.school);
         employeearray.push(intern)
         console.log("intern updated")
-        promptContinue();
+        promptStart();
     })
 };
