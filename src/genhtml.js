@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var html= `<!DOCTYPE html>
+var htmlText = `<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,6 +22,41 @@ var html= `<!DOCTYPE html>
     </div>`
 
 
-const generatehtml = (employeearray) => {
-    
+const genhtml = (employeearray) => {
+    employeearray.forEach(element => {
+        htmlText += ` <div class="col mb-4">
+        <div class="card">
+          <div class="card-header">
+                ${element.getName()} <br>\n`
+        if (element.getRole() === "Manager") {
+            htmlText += `<i class="fas fa-mug-hot"></i>`
+        } else if (element.getRole() === "Engineer") {
+            htmlText += `<i class="fas fa-glasses"></i>`
+        } else if (element.getRole() === "Intern") {
+            htmlText += `<i class="fas fa-user-graduate"></i>`
+        }
+        htmlText += ` ${element.getRole()}
+          </div>
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${element.getId()}</li>
+                    <li class="list-group-item">Email:<a href = "mailto: ${element.getEmail()}"> ${element.getEmail()}</a></li>\n`
+        if (element.getRole() === "Manager") {
+            htmlText += `<li class="list-group-item">Office Number: ${element.getOfficeNumber()}</li>\n`
+        } else if (element.getRole() === "Engineer") {
+            htmlText += `<li class="list-group-item">GitHub Username: <a href="https://github.com/${element.getGitHub()}" target="_blank">${element.getGitHub()}</a></li>\n`
+        } else if (element.getRole() === "Intern") {
+            htmlText += `<li class="list-group-item">School: ${element.getSchool()}</li>\n`
+        }
+        htmlText += `</ul></div></div></div>\n`
+    });
+
+    htmlText += `</div></body></html>`
+
+    fs.writeFileSync('index.html', htmlText);
+
 }
+
+
+
+module.exports = { genhtml };

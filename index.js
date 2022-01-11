@@ -1,33 +1,35 @@
 
-const inqurier = require("inquirer")
+const inquirer = require("inquirer")
 const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const Manager = require("./lib/Manager")
-const employeearray =[];
+const employeearray = [];
+const gen = require("./src/genhtml")
+
 promptManager()
 
-function promptStart(){
-    return inqurier.prompt([
+function promptStart() {
+    return inquirer.prompt([
         {
             type: "list",
             name: "job",
-            choices:["Engineer", "Intern", "Finish Building team."]
+            choices: ["Engineer", "Intern", "Finish Building team."]
         },
     ])
-    .then((answers) =>{
-        if (answers.job === "Engineer"){
-            promptEngineer();
-        } else if (answers.job === "Intern"){
-            promptIntern();
-        } else {
-            generateKey.generatehtml(employeearray);
-            console.log("You've Built your team")
-        }
-    })
+        .then((answers) => {
+            if (answers.job === "Engineer") {
+                promptEngineer();
+            } else if (answers.job === "Intern") {
+                promptIntern();
+            } else {
+                gen.genhtml(employeearray);
+                console.log("You've Built your team")
+            }
+        })
 };
 
-function promptManager(){
+function promptManager() {
     return inquirer.prompt([
         {
             type: "input",
@@ -37,29 +39,29 @@ function promptManager(){
         {
             type: "input",
             name: "managerid",
-            message: "What is your manager's name?"
+            message: "What is your manager's id?"
         },
         {
             type: "input",
             name: "managerEmail",
-            message: "What is your manager's name?"
+            message: "What is your manager's email?"
         },
         {
             type: "input",
             name: "managerOffice",
-            message: "What is your manager's name?"
+            message: "What is your manager's office number?"
         },
 
     ])
-    .then((answers)=>{
-        const manager = new Manager(answers.managerName, answers.managerid, answers.managerEmail, answers.mangerOffice);
-        employeearray.push(manager)
-        console.log("manager updated")
-        promptStart();
-    })
+        .then((answers) => {
+            const manager = new Manager(answers.managerName, answers.managerid, answers.managerEmail, answers.mangerOffice);
+            employeearray.push(manager)
+            console.log("manager updated")
+            promptStart();
+        })
 };
 
-function promptEngineer(){
+function promptEngineer() {
     return inquirer.prompt([
         {
             type: "input",
@@ -83,15 +85,15 @@ function promptEngineer(){
         },
 
     ])
-    .then((answers)=>{
-        const engineer = new Engineer(answers.engineerName, answers.engineerid, answers.engineerEmail, answers.engineerGithub);
-        employeearray.push(engineer)
-        console.log("engineer updated")
-        promptStart();
-    })
+        .then((answers) => {
+            const engineer = new Engineer(answers.engineerName, answers.engineerid, answers.engineerEmail, answers.engineerGithub);
+            employeearray.push(engineer)
+            console.log("engineer updated")
+            promptStart();
+        })
 };
 
-function promptIntern(){
+function promptIntern() {
     return inquirer.prompt([
         {
             type: "input",
@@ -115,10 +117,10 @@ function promptIntern(){
         },
 
     ])
-    .then((answers)=>{
-        const intern = new Intern(answers.internName, answers.internid, answers.internEmail, answers.school);
-        employeearray.push(intern)
-        console.log("intern updated")
-        promptStart();
-    })
+        .then((answers) => {
+            const intern = new Intern(answers.internName, answers.internid, answers.internEmail, answers.school);
+            employeearray.push(intern)
+            console.log("intern updated")
+            promptStart();
+        })
 };
