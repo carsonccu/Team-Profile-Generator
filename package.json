@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose test/*"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,6 @@
   "homepage": "https://github.com/carsonccu/Team-Profile-Generator#readme",
   "dependencies": {
     "inquirer": "^8.2.0",
-    "jest": "^27.3.1"
+    "jest": "^27.4.7"
   }
 }
