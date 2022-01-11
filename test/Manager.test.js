@@ -1,4 +1,4 @@
-const Manger = require("../lib/Manager")
+const Manager = require("../lib/Manager")
 
 describe("Init Employee...", () => {
     it("It should return officeNumber properties from Employee", () => {
