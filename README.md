@@ -24,8 +24,11 @@ MIT License
 https://www.w3schools.com/
 ## Tests
 npm run test
-## Github
-carsonccu
+## Screenshot
+![]()
+## Deployed/Repo
+* https://github.com/carsonccu/Team-Profile-Generator
+* https://carsonccu.github.io/Team-Profile-Generator/
 ## Email and Phone
 carsoncolgateccu@gmail.com
  

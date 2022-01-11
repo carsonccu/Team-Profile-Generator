@@ -44,7 +44,7 @@ const genhtml = (employeearray) => {
         if (element.getRole() === "Manager") {
             htmlText += `<li class="list-group-item">Office Number: ${element.getOfficeNumber()}</li>\n`
         } else if (element.getRole() === "Engineer") {
-            htmlText += `<li class="list-group-item">GitHub Username: <a href="https://github.com/${element.getGitHub()}" target="_blank">${element.getGitHub()}</a></li>\n`
+            htmlText += `<li class="list-group-item">GitHub Username: <a href="https://github.com/${element.getGithub()}" target="_blank">${element.getGithub()}</a></li>\n`
         } else if (element.getRole() === "Intern") {
             htmlText += `<li class="list-group-item">School: ${element.getSchool()}</li>\n`
         }
